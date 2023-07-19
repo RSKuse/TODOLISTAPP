@@ -14,7 +14,7 @@
 		F3FD82ED2A669128005CE648 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3FD82EC2A669128005CE648 /* Assets.xcassets */; };
 		F3FD82F02A669128005CE648 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3FD82EE2A669128005CE648 /* LaunchScreen.storyboard */; };
 		F3FD82F82A66E14E005CE648 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD82F72A66E14E005CE648 /* TaskTableViewCell.swift */; };
-		F3FD82FA2A6737BD005CE648 /* TaskModelStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD82F92A6737BD005CE648 /* TaskModelStruct.swift */; };
+		F3FD82FA2A6737BD005CE648 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD82F92A6737BD005CE648 /* Task.swift */; };
 		F3FD82FC2A673E98005CE648 /* NewRemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD82FB2A673E98005CE648 /* NewRemindersViewController.swift */; };
 		F3FD82FE2A674234005CE648 /* NewReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD82FD2A674234005CE648 /* NewReminderTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -29,7 +29,7 @@
 		F3FD82EF2A669128005CE648 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3FD82F12A669128005CE648 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3FD82F72A66E14E005CE648 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
-		F3FD82F92A6737BD005CE648 /* TaskModelStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModelStruct.swift; sourceTree = "<group>"; };
+		F3FD82F92A6737BD005CE648 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		F3FD82FB2A673E98005CE648 /* NewRemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRemindersViewController.swift; sourceTree = "<group>"; };
 		F3FD82FD2A674234005CE648 /* NewReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -45,6 +45,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4564FDCE2A67DAC00096A350 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F3FD82F92A6737BD005CE648 /* Task.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4564FDCF2A67DB390096A350 /* RemindersController */ = {
+			isa = PBXGroup;
+			children = (
+				F3FD82E72A669127005CE648 /* ViewController.swift */,
+				F3FD82F72A66E14E005CE648 /* TaskTableViewCell.swift */,
+			);
+			path = RemindersController;
+			sourceTree = "<group>";
+		};
+		4564FDD02A67DB430096A350 /* NewReminderController */ = {
+			isa = PBXGroup;
+			children = (
+				F3FD82FB2A673E98005CE648 /* NewRemindersViewController.swift */,
+				F3FD82FD2A674234005CE648 /* NewReminderTableViewCell.swift */,
+			);
+			path = NewReminderController;
+			sourceTree = "<group>";
+		};
 		F3FD82D72A669127005CE648 = {
 			isa = PBXGroup;
 			children = (
@@ -66,11 +92,9 @@
 			children = (
 				F3FD82E32A669127005CE648 /* AppDelegate.swift */,
 				F3FD82E52A669127005CE648 /* SceneDelegate.swift */,
-				F3FD82E72A669127005CE648 /* ViewController.swift */,
-				F3FD82F92A6737BD005CE648 /* TaskModelStruct.swift */,
-				F3FD82FB2A673E98005CE648 /* NewRemindersViewController.swift */,
-				F3FD82FD2A674234005CE648 /* NewReminderTableViewCell.swift */,
-				F3FD82F72A66E14E005CE648 /* TaskTableViewCell.swift */,
+				4564FDCF2A67DB390096A350 /* RemindersController */,
+				4564FDCE2A67DAC00096A350 /* Models */,
+				4564FDD02A67DB430096A350 /* NewReminderController */,
 				F3FD82E92A669127005CE648 /* Main.storyboard */,
 				F3FD82EC2A669128005CE648 /* Assets.xcassets */,
 				F3FD82EE2A669128005CE648 /* LaunchScreen.storyboard */,
@@ -155,7 +179,7 @@
 				F3FD82E82A669127005CE648 /* ViewController.swift in Sources */,
 				F3FD82FC2A673E98005CE648 /* NewRemindersViewController.swift in Sources */,
 				F3FD82E42A669127005CE648 /* AppDelegate.swift in Sources */,
-				F3FD82FA2A6737BD005CE648 /* TaskModelStruct.swift in Sources */,
+				F3FD82FA2A6737BD005CE648 /* Task.swift in Sources */,
 				F3FD82E62A669127005CE648 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

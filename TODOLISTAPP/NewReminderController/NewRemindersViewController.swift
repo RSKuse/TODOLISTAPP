@@ -10,7 +10,6 @@ import UIKit
 
 class NewRemindersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    
     lazy var newReminderTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.delegate = self
