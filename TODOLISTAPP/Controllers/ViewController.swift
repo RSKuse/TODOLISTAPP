@@ -89,11 +89,5 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         newReminderVC.modalPresentationStyle = .fullScreen
         present(newReminderVC, animated: true, completion: nil)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        taskTableView.reloadData()
-    }
-    
 }
 

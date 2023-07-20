@@ -2,6 +2,7 @@
 //  NewRemindersViewController.swift
 //  TODOLISTAPP
 //  Created by Reuben Simphiwe Kuse on 2023/07/18.
+//
 
 import Foundation
 import UIKit
@@ -66,17 +67,7 @@ class NewRemindersViewController: UIViewController {
     }
     
     @objc func addReminder() {
-        guard let taskTitle = reminderTextField.text, !taskTitle.isEmpty else {
-            return
-        }
-        let newTask = Task(title: taskTitle)
-        if let viewController = presentingViewController as? ViewController {
-            viewController.taskArray.append(newTask)
-            viewController.taskTableView.reloadData()
-        }
-
-        dismiss(animated: true)
+        
     }
-
     
 }
