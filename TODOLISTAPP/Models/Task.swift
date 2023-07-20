@@ -1,5 +1,5 @@
 //
-//  TaskModelStruct.swift
+//  Task.swift
 //  TODOLISTAPP
 //
 //  Created by Reuben Simphiwe Kuse on 2023/07/18.

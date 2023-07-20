@@ -10,12 +10,12 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var taskArray: [Task] = [
-     Task(title: "Pickup Ndalo"),
-     Task(title: "Wash Car"),
-     Task(title: "Charge Laptop for Loadshedding"),
-     Task(title: "Do Laundry")
+        Task(title: "Pickup Ndalo"),
+        Task(title: "Wash Car"),
+        Task(title: "Charge Laptop for Loadshedding"),
+        Task(title: "Do Laundry")
     ]
-
+    
     lazy var taskTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.delegate = self
@@ -38,6 +38,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Reminders"
+        let backButton = UIBarButtonItem()
+        backButton.title = "Back"
+        navigationItem.backBarButtonItem = backButton
         setupTableViewUI()
         registerCells()
     }
@@ -52,9 +55,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         taskTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
         createTaskImageButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15).isActive = true
-        //createTaskImageButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -49).isActive = true
-        createTaskImageButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -49).isActive = true
-
+        createTaskImageButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -49).isActive = true  
     }
     
     func registerCells() {
@@ -75,14 +76,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 46
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        _ = taskArray[indexPath.row]
-        taskTableView.deselectRow(at: indexPath, animated: true)
-    }
-    
+         taskTableView.deselectRow(at: indexPath, animated: true)
+         let detailReminderViewController = DetailReminderViewController()
+         detailReminderViewController.taskTitle = taskArray[indexPath.row].title
+         navigationController?.pushViewController(detailReminderViewController, animated: true)
+     }
+
     @objc func createTaskButtonPressed() {
-        let newReminderVC = NewRemindersViewController()
+        let newReminderVC = UINavigationController(rootViewController: NewRemindersViewController())
+        newReminderVC.modalPresentationStyle = .fullScreen
         present(newReminderVC, animated: true, completion: nil)
     }
 }
