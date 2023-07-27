@@ -7,7 +7,11 @@
 import Foundation
 import UIKit
 
-class NewRemindersViewController: UIViewController {
+class NewRemindersViewController: UIViewController, UITextFieldDelegate {
+    
+    
+    // 1. Closure
+    var createdTask: ((Task) -> Void)?
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -23,6 +27,8 @@ class NewRemindersViewController: UIViewController {
         textField.placeholder = "Reminder Name"
         textField.font = UIFont.systemFont(ofSize: 15)
         textField.borderStyle = .roundedRect
+        textField.returnKeyType = .done
+        textField.delegate = self
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -32,8 +38,10 @@ class NewRemindersViewController: UIViewController {
         view.backgroundColor = .white
         title = "New Reminder"
         setupUI()
-        addCloseButton()
+        addNavigationButtons()
+        reminderTextField.becomeFirstResponder() // makes the keyboard appear
     }
+    
     func setupUI() {
         view.addSubview(titleLabel)
         view.addSubview(reminderTextField)
@@ -49,12 +57,16 @@ class NewRemindersViewController: UIViewController {
         reminderTextField.heightAnchor.constraint(equalToConstant: 48).isActive = true
     }
     
-    func addCloseButton() {
+    func addNavigationButtons() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Add",
             style: .done,
             target: self,
             action: #selector(addReminder))
+        
+        // Disables Button from being clickable
+        // navigationItem.rightBarButtonItem?.isEnabled = false
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             title: "Cancel",
             style: .plain,
@@ -68,6 +80,50 @@ class NewRemindersViewController: UIViewController {
     
     @objc func addReminder() {
         
+        /*
+        let taskFromTextField = reminderTextField.text
+        if taskFromTextField != nil && taskFromTextField!.isEmpty == false {
+            let newTask = Task(title: taskFromTextField!)
+            createdTask?(newTask)
+            dismiss(animated: true)
+        }
+        */
+        
+        //////////////////////////
+        
+        // Guard
+        /*
+        let taskfromTextField = reminderTextField.text // potential to be nil
+        if taskfromTextField == nil {
+            return // Stop the code from executing beyond here.
+        }
+        */
+        
+        
+        /////////////////////////
+        // Guards are used when there is a chance that some value is nil.
+        guard let taskFromTextField = reminderTextField.text else {
+            return // Stop the code from executing beyond here.
+        }
+        
+        // If a value is NIL. Swift allows you to unwrap it with a "!". if the value indeed is NIL, unwrapping it like this will cause your app to crash.
+        // "" vs nil
+        if taskFromTextField.isEmpty == true {
+            return // Stop the code from executing beyond here
+        }
+        
+        var something = "" // empty // 0x6000020b9000
+        var somethingElse: String? // nil
+        
+        let newTask = Task(title: taskFromTextField)
+        // 2. Closure
+        createdTask?(newTask)
+        dismiss(animated: true)
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder() // dismisses the keyboard. 
     }
     
 }

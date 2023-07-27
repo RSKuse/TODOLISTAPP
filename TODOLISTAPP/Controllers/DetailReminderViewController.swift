@@ -10,17 +10,29 @@ import UIKit
 
 class DetailReminderViewController: UIViewController {
     
-    var task: Task?
-    var taskTitle: String?
+    // Task has no value. It is set to nil. You can listen for when the value is changed or nil is changed to a value.
+    var task: Task? {
+        didSet {
+            guard let newTask = task else {
+                return
+            }
+            detailLabel.text = newTask.title
+            
+            /*
+            if task?.title == "Pickup Ndalo" {
+                view.backgroundColor = .red
+            }
+            */
+        }
+    }
     
     lazy var detailLabel: UILabel = {
-           let label = UILabel()
-           label.font = UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.semibold)
-           label.textColor = UIColor.black
-           label.text = taskTitle ?? ""
-           label.translatesAutoresizingMaskIntoConstraints = false
-           return label
-       }()
+       let label = UILabel()
+       label.font = UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.semibold)
+       label.textColor = UIColor.black
+       label.translatesAutoresizingMaskIntoConstraints = false
+       return label
+    }()
     
     lazy var calenderImageView: UIImageView = {
         let imageView = UIImageView()

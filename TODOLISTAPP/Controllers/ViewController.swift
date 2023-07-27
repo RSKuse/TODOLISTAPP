@@ -7,6 +7,15 @@
 
 import UIKit
 
+///
+/// 1. Closures
+/// 2. didSet
+/// 3. guard statement - help with handling cases where a variable can give you back an optional (nil or value e.g. nil / "")
+/// 4. TextFieldDelegates - like TableViews, TextFields have delegate functions that handle specific things e.g. dismissing the keyboard using the `textFieldShouldReturn` function.
+/// 5. `tableview.reloadData()` - this handles reloading the tableview when the data it uses is updated.
+
+
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var taskArray: [Task] = [
@@ -80,12 +89,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          taskTableView.deselectRow(at: indexPath, animated: true)
          let detailReminderViewController = DetailReminderViewController()
-         detailReminderViewController.taskTitle = taskArray[indexPath.row].title
+         detailReminderViewController.task = taskArray[indexPath.row]
          navigationController?.pushViewController(detailReminderViewController, animated: true)
      }
 
     @objc func createTaskButtonPressed() {
-        let newReminderVC = UINavigationController(rootViewController: NewRemindersViewController())
+        let newReminderViewController = NewRemindersViewController()
+        
+        // 3. Closure
+        newReminderViewController.createdTask = { taskCreated in
+            self.taskArray.append(taskCreated)
+            self.taskTableView.reloadData() // tells the tableView to reload / update its UI.
+        }
+        
+        let newReminderVC = UINavigationController(rootViewController: newReminderViewController)
         newReminderVC.modalPresentationStyle = .fullScreen
         present(newReminderVC, animated: true, completion: nil)
     }
