@@ -7,13 +7,12 @@
 
 import UIKit
 
-///
 /// 1. Closures
 /// 2. didSet
 /// 3. guard statement - help with handling cases where a variable can give you back an optional (nil or value e.g. nil / "")
 /// 4. TextFieldDelegates - like TableViews, TextFields have delegate functions that handle specific things e.g. dismissing the keyboard using the `textFieldShouldReturn` function.
 /// 5. `tableview.reloadData()` - this handles reloading the tableview when the data it uses is updated.
-
+/// 6. UITextView - Multi-Line type e.g try this in your email/notes app much later.
 
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
